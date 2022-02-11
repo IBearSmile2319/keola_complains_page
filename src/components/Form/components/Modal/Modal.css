@@ -1,0 +1,102 @@
+.form-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.form-modal.is-active{
+    display: flex;
+}
+.form-modal__container{
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.form-modal__container .form-modal__header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.form-modal__container .form-modal__header h2{
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-modal__container .form-modal__header .close{
+    cursor: pointer;
+}
+.form-modal__container .form-modal__body{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.form-modal__container .form-modal__body p{
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+}
+.form-modal__container .form-modal__body .form-modal__body-copy{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-modal__container .form-modal__body .form-modal__body-copy-copy{
+    margin-left: 10px;
+    border: 1px solid #FFA31A;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 2px 5px;
+    color: #FFA31A;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.form-modal__container .form-modal__body .form-modal__body-copy-copy.is-active{
+    background: #FFA31A;
+    color: #fff;
+}
+.form-modal__container .form-modal__body .form-modal__input{
+    margin-bottom: 10px;
+}
+
+.form-modal__container .form-modal__footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: ; */
+}
+.form-modal__container .form-modal__footer button{
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid #FFA31A;
+    /* background: #FFA31A; */
+    background: #fff;
+    color: #FFA31A;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.form-modal__container .form-modal__footer button:hover{
+    background: #FFA31A;
+    color: #fff;
+}
+
+
