@@ -11,10 +11,6 @@ import { ComplaisSchema1, ComplaisSchema2 } from '../../utils/validateYup'
 import TextAreaComplains from './components/TextAreaComplains'
 import Modal from './components/Modal'
 import { fetchApi } from '../../hooks/fetch'
-
-
-
-
 const Form2 = () => {
     const [change, setChange] = useState({
         personType: 0,
@@ -24,7 +20,7 @@ const Form2 = () => {
     })
     const [modal, setModal] = useState(false)
     const [modalText, setModalText] = useState("")
-
+    const [errModal, setErrModal] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(!change.isMinor ? ComplaisSchema1 : ComplaisSchema2)
     })
@@ -37,6 +33,8 @@ const Form2 = () => {
                 proofOfPayment: form.paymentReceipt,
                 voucherNumber: form.npaymentReceipt ? `${form.npaymentReceipt}` : form.npaymentReceipt,
                 branchOffice: form.sede,
+                // si pasas este dato como null el backend debuelve un error
+                // usalo para probar los modales. cambia "" por null
                 filePath: form.file ? form.file : "",
                 detailsProductOrService: form.detailProduct,
                 detailOfClaimOrComplaint: form.detailComplain,
@@ -65,9 +63,13 @@ const Form2 = () => {
         console.log(Form)
         const data = await fetchApi("http://45.66.156.160:98/api/ClaimantConsumerManifest", Form)
         if (data.status === 1) {
+            setErrModal(false)
             setModal(true)
             console.log(data.description)
             setModalText(data.objModel)
+        } else {
+            setErrModal(true)
+            setModal(true)
         }
     }
 
@@ -330,13 +332,30 @@ const Form2 = () => {
                     </button>
                 </div>
             </form >
+            {!errModal ?
+                <Modal
+                    isOpen={modal}
+                    onRequestClose={() => setModal(false)}
+                    title="¡Su reclamo fue enviado!"
+                    texts={[
+                        "Gracias por enviarnos tu inconveniente, trataremos de resolverlo,",
+                        "en la brevedad posible.",
+                        "¡Muchas gracias!",
+                        "Guarda este codigo para poder consultar el estado de tu reclamo:",
 
-            <Modal
-                isOpen={modal}
-                onRequestClose={() => setModal(false)}
-                title="¡Su reclamo fue enviado!"
-                text={modalText}
-            />
+                    ]}
+                    text={modalText}
+                />
+                :
+                <Modal
+                    isOpen={modal}
+                    onRequestClose={() => setModal(false)}
+                    title="¡No pudimos procesar su solicitud!"
+                    texts={["Por favor, intente nuevamente.", "¡Muchas gracias!"]}
+                    errors={errModal}
+                    text={modalText}
+                />
+            }
         </>
     )
 }

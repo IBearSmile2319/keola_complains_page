@@ -1,7 +1,15 @@
 import React, { useState } from 'react'
 import './Modal.css'
-const Modal = ({ title, text, isOpen, onRequestClose }) => {
-    const [copy,setCopy]= useState("Copiar")
+const Modal = ({
+    title,
+    text,
+    isOpen,
+    onRequestClose,
+    texts,
+    errors,
+}) => {
+    const [copy, setCopy] = useState("Copiar")
+
     const handleCopy = () => {
         navigator.clipboard.writeText(text)
         setCopy("¡Copiado!")
@@ -16,16 +24,22 @@ const Modal = ({ title, text, isOpen, onRequestClose }) => {
                     {/* <span className='close'>&times;</span> */}
                 </div>
                 <div className='form-modal__body'>
-                    <p>Gracias por enviarnos tu inconveniente, trataremos de resolverlo,</p>
-                    <p>guarda este codigo.</p>
-                    <div
-                    className='form-modal__body-copy'
-                    >
-                        <h2 onClick={handleCopy}>{text}</h2>
-                        <span 
-                        onClick={handleCopy} 
-                        className={`form-modal__body-copy-copy ${copy!=="Copiar" ? 'is-active':''}`}
-                        >{copy}</span>
+                    {texts.map((value, index) =>
+                        <p key={index}>{value}</p>
+                    )}
+                    <div className='form-modal__body-copy'>
+                        {errors ?
+                            <i 
+                            style={{ fontSize: '4rem', marginTop:"10px" }}
+                            className="fa-solid fa-bomb"></i>
+                            : <>
+                                <h2 onClick={handleCopy}>{text}</h2>
+                                <span
+                                    onClick={handleCopy}
+                                    className={`form-modal__body-copy-copy ${copy !== "Copiar" ? 'is-active' : ''}`}
+                                >{copy}</span>
+                            </>
+                        }
                     </div>
                 </div>
                 <div className='form-modal__footer'>
