@@ -1,0 +1,161 @@
+/* formulario */
+.complain-main__form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    margin: 40px 5px 0 5px;
+}
+@media (max-width: 768px) {
+  .complain-main__form{
+    margin: 10px 5px 0 5px;
+  }
+}
+
+
+.complain-main__form .complain-main__form-container-item{
+  display: grid;
+  grid-template-columns: 1fr 1fr 200px;
+  grid-gap:5px 30px;
+}
+@media (max-width: 1000px) {
+  .complain-main__form .complain-main__form-container-item{
+    grid-template-columns: 1fr 1fr;
+    grid-gap:5px;
+  }
+  .complain-main__form .complain-main__form-container-item>span{
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .complain-main__form .complain-main__form-container-item{
+    grid-template-columns: 1fr;
+    grid-gap:5px;
+  }
+  .complain-main__form .complain-main__form-container-item>span{
+    display: none;
+  }
+}
+.complain-main__form .complain-main__form-container-item>label{
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin: 10px 0px;
+}
+.complain-main__form .complain-main__form-container-item>label>h3{
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin: 10px 0px;
+}
+
+.complain-main__form .complain-main__form-container-item>label>span{
+  margin: 0 10px;
+}
+.complain-main__form .complain-main__form-container-item-2{
+  display: grid;
+  grid-template-columns: 2fr 200px;
+  grid-gap:5px 30px;
+  margin-top: 30px;
+}
+@media (max-width: 768px) {
+  .complain-main__form .complain-main__form-container-item-2{
+    grid-template-columns: 1fr;
+    grid-gap:5px;
+  }
+}
+.complain-main__form .complain-main__form-container-item-2 >label{
+  display: flex;
+  flex-direction: column
+}
+.complain-main__form .complain-main__form-container-item-2 >label>h3{
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin: 3px 2px;
+}
+.complain-main__form .complain-main__form-container-item-2 >label>textarea{
+  border: 2px solid #FFA31A;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100%;
+  font-size: 0.7rem;
+  font-weight: 300;
+  margin: 10px 0px;
+  font-family: "poppins";
+  resize: none;
+}
+.complain-main__form .complain-main__form-container-item-2 >label>textarea:focus{
+  outline: #FFA31A;
+}
+
+.complain-main__form .complain-main__form-container-item-2 button{
+  background: #FE3C17;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin: 10px auto;
+  font-family: "poppins";
+  transition: 0.3s;
+  cursor: pointer;
+  width: 300px;
+}
+@media (max-width: 768px) {
+  .complain-main__form .complain-main__form-container-item-2 button{
+    width: 100%;
+  }
+}
+.complain-main__form .complain-main__form-container-item-2 button.disabled{
+  background: #ccc;
+  cursor: not-allowed;
+}
+.complain-main__form .complain-main__form-container-item-2 button:hover{
+  background: #FFA31A;
+}
+.complain-main__form .complain-main__form-container-item-2 button.disabled:hover{
+  background: #ccc;
+}
+
+.selected-main-form{
+  display: flex;
+  flex-direction: column;
+}
+.selected-main-form h2{
+  margin: 5px 0;
+  font-size: 1.1rem;
+  font-weight:300;
+}
+.selected-main-form select{
+  border: 1px solid #FFA31A;
+  border-radius: 0.7rem;
+  padding: 9px;
+  linar-gradient: rgba(to bottom, #fff 0%, #fff 100%);
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin:0;
+  font-family: "poppins";
+}
+.selected-main-form select:focus{
+  outline: #FFA31A;
+}
+
+.selected-main-form select::-ms-expand{
+  display: none;
+}
+.selected-main-form select::-ms-value{
+  background: transparent;
+}
+
+.selected-main-form select option{
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.complain-main__form .complain-main__msg-error{
+  color: #FE3C17;
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin: 0;
+  font-family: "poppins";
+}

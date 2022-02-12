@@ -1,6 +1,7 @@
 import Kaola from './assets/img.png'
 import Bisinessman from './assets/Businessman'
 import Form from './components/Form'
+import Form2 from './components/Form2'
 const App = () => {
   return (
     <div className="complain-page">
@@ -26,7 +27,7 @@ const App = () => {
           </div>
         </div>
         {/* formulario */}
-        <Form />
+        <Form2 />
 
       </main>
 

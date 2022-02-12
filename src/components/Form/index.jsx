@@ -73,13 +73,14 @@ const Form = () => {
             }
         }
         console.log(Form)
-        const data =await fetchApi("http://45.66.156.160:98/api/ClaimantConsumerManifest", Form)
-        setModal(true)
-        if (data.status === 1) {
-            console.log(data.description)
-            setModalText(data.objModel)
-            setForm(values)
-        }
+        // console.log(Form)
+        // const data =await fetchApi("http://45.66.156.160:98/api/ClaimantConsumerManifest", Form)
+        // setModal(true)
+        // if (data.status === 1) {
+        //     console.log(data.description)
+        //     setModalText(data.objModel)
+        //     setForm(values)
+        // }
     }
 
 

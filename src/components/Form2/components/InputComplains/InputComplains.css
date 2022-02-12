@@ -1,0 +1,50 @@
+.input-complain{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+    margin: 5px 0 5px 0;
+}
+.input-complain__title{
+    font-size: 1rem;
+    font-weight: 400;
+    /* margin-right: 10px; */
+    margin: 5px 0;
+    
+}
+.input-complain__input{
+    display: flex;
+    width: 100%;
+    border: 1px solid #FF9300;
+    font-family: "poppins";
+    border-radius: 0.8rem;
+    overflow: hidden;
+    
+}
+.input-complain__input input{
+    width: 100%;
+    height: 35px;
+    border: none;
+    background: transparent;
+    font-weight: 200;
+    padding: 0 10px;
+}
+.input-complain__input input:focus{
+    outline: none;
+}
+.input-complain__input span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 20px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: "poppins";
+    
+    color: #FF9300;
+    transition: 0.3s;
+}
+.input-complain__input .input-complain__input-delete:hover{
+    color: rgb(250, 51, 51);
+    cursor: pointer;
+}

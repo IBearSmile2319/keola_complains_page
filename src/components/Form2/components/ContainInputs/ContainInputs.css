@@ -1,0 +1,19 @@
+.complain-main__form .complain-main__form-label{
+    display: flex;
+    flex-direction: column;
+}
+
+.complain-main__form .complain-main__form-title{
+    font-weight: 600;
+  }
+  .complain-main__form .complain-main__form-title h2{
+    font-size: 1.2rem;
+    margin: 5px 0;
+  }
+  @media (max-width: 768px) {
+    .complain-main__form .complain-main__form-title{
+      display: flex;
+      align-items: center;
+        justify-content: center;
+    }
+  }
