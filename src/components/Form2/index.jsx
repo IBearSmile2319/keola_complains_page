@@ -55,11 +55,11 @@ const Form2 = () => {
                 district: form.city,
                 email: form.email,
                 younger: change.isMinor,
-                proxyname: form.legalGuardianName,//? form.legalGuardianName : null,
-                proxyDocumentNumber: form.legalGuardianNumberID ? `${form.legalGuardianNumberID}` : form.legalGuardianNumberID,
-                proxyEmail: form.legalGuardianEmail, //? form.legalGuardianEmail : null,
-                proxyPhone: form.legalGuardianPhone ? `${form.legalGuardianPhone}` : form.legalGuardianNumberID,
-                proxyAddrees: form.legalGuardianAddress,//? form.legalGuardianAddress : null,
+                proxyname: form.legalGuardianName ? form.legalGuardianName : null,
+                proxyDocumentNumber: form.legalGuardianNumberID ? `${form.legalGuardianNumberID}` : null,
+                proxyEmail: form.legalGuardianEmail ? form.legalGuardianEmail : null,
+                proxyPhone: form.legalGuardianPhone ? `${form.legalGuardianPhone}` : null,
+                proxyAddrees: form.legalGuardianAddress ? form.legalGuardianAddress : null,
             }
         }
         console.log(Form)
@@ -106,6 +106,7 @@ const Form2 = () => {
                             <SelectComplains
                                 label="Doc. Indentidad:"
                                 {...register("typeID")}
+                                values={["DNI", "RUC", "Pasaporte"]}
                             />
                             <span></span>
                             <InputComplains
@@ -200,8 +201,7 @@ const Form2 = () => {
                                     register={register}
                                     placeholder="Nombres y apellidos..."
                                     label="legalGuardianName"
-
-                                // errors={errors}
+                                    errors={errors}
                                 />
                                 <InputComplains
                                     title="Número de documento:"
@@ -233,7 +233,7 @@ const Form2 = () => {
                                     register={register}
                                     placeholder="Dirección..."
                                     label="legalGuardianAddress"
-
+                                    errors={errors}
                                 />
                             </div>
                         </SubTitle>
@@ -256,13 +256,11 @@ const Form2 = () => {
                                 <span>Servicio</span>
                             </label>
                             <span></span>
-                            <InputComplains
-                                title="Comprobante de pago:"
-                                label="paymentReceipt"
-                                placeholder="Comprobante de pago..."
-                                register={register}
+                            <SelectComplains
+                                label="Doc. Indentidad:"
+                                {...register("paymentReceipt")}
+                                values={["FACTURA", "BOLETA", "TICKET", "RECIBO", "OTRO"]}
                                 required={true}
-                                errors={errors}
                             />
                             <InputComplains
                                 title="Número de factura:"
@@ -281,6 +279,16 @@ const Form2 = () => {
                                 required={true}
                                 errors={errors}
                             />
+
+                            {/* para cuando ya este el guardado de archivos en el backend */}
+                            {/* <InputComplains
+                                title="archivo:"
+                                label="file"
+                                type="file"
+                                placeholder="Archivo..."
+                                register={register}
+                                errors={errors}
+                            /> */}
                         </div>
                         <div className="complain-main__form-container-item-2">
 
