@@ -11,6 +11,7 @@ import { ComplaisSchema1, ComplaisSchema2 } from '../../utils/validateYup'
 import TextAreaComplains from './components/TextAreaComplains'
 import Modal from './components/Modal'
 import { fetchApi } from '../../hooks/fetch'
+
 const Form2 = () => {
     const [change, setChange] = useState({
         personType: 0,
@@ -26,42 +27,41 @@ const Form2 = () => {
     })
 
     const onSubmit = async (form) => {
-        const Form = {
-            claimantConsumerManifestRequestDTO: {
-                manifestType: change.complainType,
-                wellHired: change.service,
-                proofOfPayment: form.paymentReceipt,
-                voucherNumber: form.npaymentReceipt ? `${form.npaymentReceipt}` : form.npaymentReceipt,
-                branchOffice: form.sede,
-                // si pasas este dato como null el backend debuelve un error
-                // usalo para probar los modales. cambia "" por null
-                filePath: form.file ? form.file : "",
-                detailsProductOrService: form.detailProduct,
-                detailOfClaimOrComplaint: form.detailComplain,
-                actionsTakenByTheProvider: form.ProveedorAction,
-            },
-            claimantConsumerIdentifierRequestDTO: {
-                personType: change.personType,
-                nameAndLastName: form.fullName,
-                identificationDocument: form.typeID,
-                documentNumber: form.NDocumentID ? `${form.NDocumentID}` : form.NDocumentID,
-                bunisseName: form.social,
-                directions: form.address,
-                phone: form.phone ? `${form.phone}` : form.phone,
-                departament: form.appt,
-                province: form.province,
-                district: form.city,
-                email: form.email,
-                younger: change.isMinor,
-                proxyname: form.legalGuardianName ? form.legalGuardianName : null,
-                proxyDocumentNumber: form.legalGuardianNumberID ? `${form.legalGuardianNumberID}` : null,
-                proxyEmail: form.legalGuardianEmail ? form.legalGuardianEmail : null,
-                proxyPhone: form.legalGuardianPhone ? `${form.legalGuardianPhone}` : null,
-                proxyAddrees: form.legalGuardianAddress ? form.legalGuardianAddress : null,
-            }
-        }
-        console.log(Form)
-        const data = await fetchApi("http://45.66.156.160:98/api/ClaimantConsumerManifest", Form)
+        const formData = new FormData();
+        // formData.append("claimantConsumerManifestRequestDTO.id", 1)
+        formData.append("claimantConsumerManifestRequestDTO.manifestType", change.complainType) //int
+        formData.append("claimantConsumerManifestRequestDTO.wellHired", change.service) // int
+        formData.append("claimantConsumerManifestRequestDTO.proofOfPayment", form.paymentReceipt)
+        formData.append("claimantConsumerManifestRequestDTO.voucherNumber", form.npaymentReceipt ? `${form.npaymentReceipt}` : form.npaymentReceipt)
+        formData.append("claimantConsumerManifestRequestDTO.branchOffice", form.sede)
+        // formData.append("claimantConsumerManifestRequestDTO.filePath", "1")
+
+        formData.append("claimantConsumerManifestRequestDTO.detailsProductOrService", form.detailProduct)
+        formData.append("claimantConsumerManifestRequestDTO.detailOfClaimOrComplaint", form.detailComplain)
+        formData.append("claimantConsumerManifestRequestDTO.actionsTakenByTheProvider", form.ProveedorAction)
+
+        formData.append("claimantConsumerManifestRequestDTO.file", form.file)
+
+        // formData.append("claimantConsumerIdentifierRequestDTO.id", 1)
+        formData.append("claimantConsumerIdentifierRequestDTO.personType", change.personType)
+        formData.append("claimantConsumerIdentifierRequestDTO.nameAndLastName", form.fullName)
+        formData.append("claimantConsumerIdentifierRequestDTO.identificationDocument", form.typeID)
+        formData.append("claimantConsumerIdentifierRequestDTO.documentNumber", form.NDocumentID ? `${form.NDocumentID}` : form.NDocumentID)
+        formData.append("claimantConsumerIdentifierRequestDTO.bunisseName", form.social)
+        formData.append("claimantConsumerIdentifierRequestDTO.directions", form.address)
+        formData.append("claimantConsumerIdentifierRequestDTO.phone", form.phone ? `${form.phone}` : form.phone)
+        formData.append("claimantConsumerIdentifierRequestDTO.departament", form.appt)
+        formData.append("claimantConsumerIdentifierRequestDTO.province", form.province)
+        formData.append("claimantConsumerIdentifierRequestDTO.district", form.city)
+        formData.append("claimantConsumerIdentifierRequestDTO.email", form.email)
+        formData.append("claimantConsumerIdentifierRequestDTO.younger", change.isMinor)
+        formData.append("claimantConsumerIdentifierRequestDTO.proxyname", form.legalGuardianName ? form.legalGuardianName : null)
+        formData.append("claimantConsumerIdentifierRequestDTO.proxyDocumentNumber", form.legalGuardianNumberID ? `${form.legalGuardianNumberID}` : null)
+        formData.append("claimantConsumerIdentifierRequestDTO.proxyEmail", form.legalGuardianEmail? form.legalGuardianEmail: null)// ? form.legalGuardianEmail : "")
+        formData.append("claimantConsumerIdentifierRequestDTO.proxyPhone", form.legalGuardianPhone? form.legalGuardianPhone: null)// ? form.legalGuardianPhone : "")
+        formData.append("claimantConsumerIdentifierRequestDTO.proxyAddrees", form.legalGuardianAddress ? form.legalGuardianAddress : null)
+        const data = await fetchApi("http://45.66.156.160:98/api/ClaimantConsumerManifest", formData)
+        console.log(data)
         if (data.status === 1) {
             setErrModal(false)
             setModal(true)
@@ -283,14 +283,14 @@ const Form2 = () => {
                             />
 
                             {/* para cuando ya este el guardado de archivos en el backend */}
-                            {/* <InputComplains
+                            <InputComplains
                                 title="archivo:"
                                 label="file"
                                 type="file"
                                 placeholder="Archivo..."
                                 register={register}
                                 errors={errors}
-                            /> */}
+                            />
                         </div>
                         <div className="complain-main__form-container-item-2">
 
