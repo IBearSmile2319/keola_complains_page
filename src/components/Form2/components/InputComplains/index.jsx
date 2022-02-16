@@ -19,6 +19,7 @@ const InputComplains = ({
         <div className="">
           <input
             type={type}
+            accept="application/pdf"
             name={label}
             {...register(label, { required: required ? required : false })}
           />

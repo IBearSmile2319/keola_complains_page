@@ -288,6 +288,7 @@ const Form2 = () => {
                                 label="file"
                                 type="file"
                                 placeholder="Archivo..."
+                                required={true}
                                 register={register}
                                 errors={errors}
                             />
