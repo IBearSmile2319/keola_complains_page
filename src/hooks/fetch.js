@@ -7,11 +7,11 @@ export const fetchApi=async (url,data)=> {
         // headers: {
         //   // 'Content-Type': 'application/json',
         //   // 'Content-Type': 'application/x-www-form-urlencoded',
-        //   "Content-Type": "multipart/form-data",
-        //   "accept": "*/*",
+          // "Content-Type": "multipart/form-data",
+          // "accept": "*/*",
         // },
         // dataType: "text",
-        // dataType: "form-data",
+        dataType: "form-data",
         // redirect: 'follow', // manual, *follow, error
         // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: data // body data type must match "Content-Type" header

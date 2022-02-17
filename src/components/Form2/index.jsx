@@ -40,7 +40,7 @@ const Form2 = () => {
         formData.append("claimantConsumerManifestRequestDTO.detailOfClaimOrComplaint", form.detailComplain)
         formData.append("claimantConsumerManifestRequestDTO.actionsTakenByTheProvider", form.ProveedorAction)
 
-        formData.append("claimantConsumerManifestRequestDTO.file", form.file)
+        formData.append("claimantConsumerManifestRequestDTO.file", form.file[0])
 
         // formData.append("claimantConsumerIdentifierRequestDTO.id", 1)
         formData.append("claimantConsumerIdentifierRequestDTO.personType", change.personType)
@@ -60,6 +60,7 @@ const Form2 = () => {
         formData.append("claimantConsumerIdentifierRequestDTO.proxyEmail", form.legalGuardianEmail? form.legalGuardianEmail: null)// ? form.legalGuardianEmail : "")
         formData.append("claimantConsumerIdentifierRequestDTO.proxyPhone", form.legalGuardianPhone? form.legalGuardianPhone: null)// ? form.legalGuardianPhone : "")
         formData.append("claimantConsumerIdentifierRequestDTO.proxyAddrees", form.legalGuardianAddress ? form.legalGuardianAddress : null)
+        console.log(form)
         const data = await fetchApi("http://45.66.156.160:98/api/ClaimantConsumerManifest", formData)
         console.log(data)
         if (data.status === 1) {
